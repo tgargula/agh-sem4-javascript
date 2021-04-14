@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Thinking in Java</title>
+    <meta name="description" content="Thinking in Java. Your favourite book in Web!">
+    <meta name="author" content="Tomasz Gargula">
+</head>
+
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
+        <div class="container-md bg-dark">
+            <a class="navbar-brand navbar-light" href="index.html">
+                <i class="fab fa-java p-2" style="color: white;"></i>
+                <span>Thinking in Java</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+                aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-box-open"></i>
+                            Containers
+                        </a>
+                        <div class="dropdown-menu bg-dark" aria-labelledby="dropdownContainers">
+                            <a class="dropdown-item text-white" href="lists.html">Lists</a>
+                            <a class="dropdown-item text-white" href="sets.html">Sets</a>
+                            <a class="dropdown-item text-white" href="maps.html">Maps</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="new.html">
+                            <i class="fas fa-question"></i>
+                            What's new
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                            href="http://www.dblab.ntua.gr/~gtsat/collection/Java%20books/Bruce.Eckel.Thinking.In.Java.4th.Edition.Dec.2007.eBook-BBL.pdf">
+                            <i class="fas fa-book"></i>
+                            E-book
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-md">
+        <div class="row">
+            <div class="col-12 col-lg-6 text-justify">
+                <header class="py-3">
+                    <h1>List</h1>
+                </header>
+                <p>Lists promise to maintain elements in a particular sequence. The List interface adds a number of
+                    methods to Collection that allow insertion and removal of elements in the middle of a List.</p>
+                <p>There are two types of List: </p>
+                <ul>
+                    <li>The basic ArrayList, which excels at randomly accessing elements, but is slower when inserting
+                        and removing elements in the middle of a List.</li>
+                    <li>The LinkedList, which provides optimal sequential access, with inexpensive insertions and
+                        deletions from the middle of the List. A LinkedList is relatively slow for random access, but it
+                        has a larger feature set than the ArrayList.</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-6 col-12 text-center p-3">
+                <div class="card my-3">
+                    <i class="card-img-top fab fa-java fa-10x text-white bg-danger p-5"></i>
+                    <div class="card-body">
+                        <p>
+                        <h5>New features in Java 16!</h5>
+                        </p>
+                        <a type="button" class="btn btn-primary"
+                            href="https://www.infoworld.com/article/3569150/jdk-16-the-new-features-in-java-16.html">Check!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-justify">
+            <p>The following example reaches forward in the book to use a library from the Type Information chapter
+                by importing typeinfo.pets. This is a library that contains a hierarchy of Pet classes along with
+                some tools to randomly generate Pet objects. You don’t need to know the full details at this point,
+                just that (1) there’s a Pet class and various subtypes of Pet and (2) the static Pets.arrayList( )
+                method will return an ArrayList filled with randomly selected Pet objects:</p>
+            <pre class="bg-dark text-light py-3 px-5 rounded col-12">
+import typeinfo.pets.*; 
+import java.util.*; 
+import static net.mindview.util.Print.*; 
+public class ListFeatures {   
+    public static void main(String[] args) {     
+        Random rand = new Random(47);     
+        List&lt;Pet&gt; pets = Pets.arrayList(7);     
+        print("1: " + pets);     
+        Hamster h = new Hamster();     
+        pets.add(h); // Automatically resizes     
+        print("2: " + pets);     
+        print("3: " + pets.contains(h));     
+        pets.remove(h); // Remove by object     
+        Pet p = pets.get(2);     
+        print("4: " +  p + " " + pets.indexOf(p));     
+        Pet cymric = new Cymric();     
+        print("5: " + pets.indexOf(cymric));     
+        print("6: " + pets.remove(cymric));     
+        // Must be the exact object:     
+        print("7: " + pets.remove(p));     
+        print("8: " + pets);     
+        pets.add(3, new Mouse()); 
+        // Insert at an index Holding Your Objects
+        print("9: " + pets);
+        List&lt;Pet&gt; sub = pets.subList(1, 4);
+        print("subList: " + sub);
+        print("10: " + pets.containsAll(sub));
+        Collections.sort(sub); // In-place sort
+        print("sorted subList: " + sub);
+        // Order is not important in containsAll():
+        print("11: " + pets.containsAll(sub));
+        Collections.shuffle(sub, rand); // Mix it up
+        print("shuffled subList: " + sub);
+        print("12: " + pets.containsAll(sub));
+        List&lt;Pet&gt; copy = new ArrayList&lt;Pet&gt;(pets);
+        sub = Arrays.asList(pets.get(1), pets.get(4));
+        print("sub: " + sub);
+        copy.retainAll(sub);
+        print("13: " + copy);
+        copy = new ArrayList&lt;Pet&gt;(pets); // Get a fresh copy
+        copy.remove(2); // Remove by index
+        print("14: " + copy);
+        copy.removeAll(sub); // Only removes exact objects
+        print("15: " + copy);
+        copy.set(1, new Mouse()); // Replace an element
+        print("16: " + copy);
+        copy.addAll(2, sub); // Insert a list in the middle
+        print("17: " + copy);
+        print("18: " + pets.isEmpty());
+        pets.clear(); // Remove all elements
+        print("19: " + pets);
+        print("20: " + pets.isEmpty());
+        pets.addAll(Pets.arrayList(4));
+        print("21: " + pets);
+        Object[] o = pets.toArray();
+        print("22: " + o[3]);
+        Pet[] pa = pets.toArray(new Pet[0]);
+        print("23: " + pa[3].id());   
+    } 
+} /* Output: 
+1: [Rat, Manx, Cymric, Mutt, Pug, Cymric, Pug]
+2: [Rat, Manx, Cymric, Mutt, Pug, Cymric, Pug, Hamster]
+3: true 
+4: Cymric 2 
+5: -1 
+6: false 
+7: true 
+8: [Rat, Manx, Mutt, Pug, Cymric, Pug]
+9: [Rat, Manx, Mutt, Mouse, Pug, Cymric, Pug]
+subList: [Manx, Mutt, Mouse]
+10: true 
+sorted subList: [Manx, Mouse, Mutt]
+11: true 
+shuffled subList: [Mouse, Manx, Mutt]
+12: true 
+sub: [Mouse, Pug]
+13: [Mouse, Pug]
+14: [Rat, Mouse, Mutt, Pug, Cymric, Pug]
+15: [Rat, Mutt, Cymric, Pug]
+16: [Rat, Mouse, Cymric, Pug]
+17: [Rat, Mouse, Mouse, Pug, Cymric, Pug]
+18: false 19: []
+20: true 21: [Manx, Cymric, Rat, EgyptianMau]
+22: EgyptianMau
+23: 14
+</pre>
+
+</div>
+    </div>
+
+
+
+    <footer class="text-white bg-dark p-2">
+        <div class="container-md">
+            Do you want to send me feedback? <a href="mailto:tgargula@student.agh.edu.pl">Contact me!</a>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

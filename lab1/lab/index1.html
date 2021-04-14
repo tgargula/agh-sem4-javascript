@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" media="screen" type="text/css">
     <title>
         Tytuł strony
     </title>
@@ -14,12 +16,23 @@
 <body class="w3-light-grey w3-border" style="margin: 5% 10%;">
     <nav class="w3-bar w3-grey w3-mobile">
         <!--Tutaj menu nawigacyjne / Here the navigation menu -->
-        <a href="#" class="w3-bar-item w3-button">Dziekanat</a>
-        <div class="w3-dropdown-hover w3-dropdown-click w3-center">
-            <button class="w3-button w3-text-dark-grey">Studia <i class="fa fa-caret-down"></i></button>
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="#" class="w3-bar-item w3-button">Stacjonarne</a>
-                <a href="#" class="w3-bar-item w3-button">Niestacjonarne</a>
+        <div class="normal-menu">
+            <a href="#" class="w3-bar-item w3-button">Dziekanat</a>
+            <div class="w3-dropdown-hover w3-dropdown-click w3-center">
+                <button class="w3-button w3-text-dark-grey">Studia <i class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="#" class="w3-bar-item w3-button">Stacjonarne</a>
+                    <a href="#" class="w3-bar-item w3-button">Niestacjonarne</a>
+                </div>
+            </div>
+        </div>
+        <div class="hamburger-menu w3-dropdown-hover">
+            <button class="w3-button"><i class="fa fa-navicon" style="color: rgb(43, 43, 43);"></i></button>
+            <div class="w3-dropdown-content w3-mobile" style="width: 80%;">
+                <a href="#" class="w3-button w3-col s12 m12">Dziekanat</a><br>
+                <div class="w3-button w3-col s12 m12">Studia</div><br>
+                <a href="#" class="w3-button w3-col s12 m12">Stacjonarne</a><br>
+                <a href="#" class="w3-button w3-col s12 m12">Niestacjonarne</a>
             </div>
         </div>
     </nav>
@@ -31,29 +44,31 @@
             Wydział IET
         </h1>
 
-        <div class="w3-content w3-center w3-row-padding">
-            <div class="w3-card w3-border w3-round w3-mobile w3-cell w3-left">
-                <header class="w3-border w3-grey w3-padding w3-">Jan Kowalski</header>
-                <h2>Informatyka</h2>
-                <img class="w3-mobile" alt="default-man.png" src="default-man.png"></img>
+        <div class="w3-row w3-center" style="margin: 0% 4%;">
+            <div class="w3-card w3-white w3-border w3-round w3-mobile w3-col l3 m12 s12 animated"
+                style="margin-right: 11.5%">
+                <header class="w3-border w3-grey w3-padding">Jan Kowalski</header>
+                <h3>Informatyka</h3>
+                <img class="w3-mobile" alt="default-man.png" src="default-man.png" style="max-width: 100%;"></img>
+                <footer>
+                    Aktualne stanowisko: asystent
+                </footer>
+            </div>
+            <div class="w3-card w3-white w3-border w3-round w3-mobile w3-col l3 m12 s12 animated"
+                style="margin-right: 11.5%">
+                <header class="w3-border w3-grey w3-padding">Anna Nowak</header>
+                <h3>Elektronika</h3>
+                <img class="w3-mobile" alt="default-man.png" src="default-man.png" style="max-width: 100%;"></img>
                 <footer>
                     Aktualne stanowisko: adiunkt
                 </footer>
             </div>
-            <div class="w3-card w3-border w3-round w3-mobile w3-cell w3-left">
-                <header class="w3-border w3-grey w3-padding">Jan Kowalski</header>
-                <h2>Informatyka</h2>
-                <img class="w3-mobile" alt="default-man.png" src="default-man.png"></img>
+            <div class="w3-card w3-white w3-border w3-round w3-mobile w3-col l3 m12 s12 animated">
+                <header class="w3-border w3-grey w3-padding">Jerzy Żmuda</header>
+                <h3>Telekomunikacja</h3>
+                <img class="w3-mobile" alt="default-man.png" src="default-man.png" style="max-width: 100%;"></img>
                 <footer>
-                    Aktualne stanowisko: adiunkt
-                </footer>
-            </div>
-            <div class="w3-card w3-border w3-round w3-mobile w3-cell w3-left">
-                <header class="w3-border w3-grey w3-padding">Jan Kowalski</header>
-                <h2>Informatyka</h2>
-                <img class="w3-mobile" alt="default-man.png" src="default-man.png"></img>
-                <footer>
-                    Aktualne stanowisko: adiunkt
+                    Aktualne stanowisko: wykładowca
                 </footer>
             </div>
         </div>

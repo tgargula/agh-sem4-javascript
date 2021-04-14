@@ -1,0 +1,36 @@
+@media screen and (min-device-width: 768px) and (min-width: 768px) {
+    .animated {
+        animation: wild-bounces 10s infinite alternate;
+    }
+
+    .hamburger-menu {
+        display: none;
+    }
+}
+
+@media not screen and (min-device-width: 768px) and (min-width: 768px) {
+    .normal-menu {
+        display: none;
+    }
+}
+
+@keyframes wild-bounces {
+    0% {
+        transform: translate(0px) rotate(0px);
+    }
+    20% {
+        transform: translate(100px, -50px) rotate(20deg);
+    }
+    40% {
+        transform: translate(30px) rotate(-40deg);
+    }
+    60% {
+        transform: translate(200px, -80px) rotate(45deg);
+    }
+    80% {
+        transform: translate(350px, -50px) rotate(-20deg);
+    }
+    100% {
+        transform: translate(325px, -50px) rotate(20deg);
+    }
+}

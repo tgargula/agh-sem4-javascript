@@ -1,0 +1,54 @@
+aside  {
+    float: right;
+    width: 50%;
+}
+
+footer {
+    position: inherit;
+    left: 0;
+    bottom: 0;
+    padding: 5px;
+    display: block;
+}
+
+header {
+}
+
+main {
+    width: 40%;
+}
+
+nav {
+    display: inline-block;
+}
+
+nav ul {
+
+}
+
+nav li {
+
+}
+
+blockquote {
+    font-family: monospace;
+}
+
+.azure {
+    background-color: azure;
+}
+
+.border {
+    border-style: solid;
+    border-color: rgb(37, 37, 37);
+    border-width: 1px;
+    box-shadow: 0px 0px 3px 2px #A8A8A8;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.mb-25 {
+    margin-bottom: 25px;
+}
