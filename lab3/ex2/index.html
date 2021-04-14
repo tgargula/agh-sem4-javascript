@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="http://requirejs.org/docs/release/2.3.2/minified/require.js"
+    ></script>
+    <style>
+      body {
+        text-align: center;
+      }
+      form {
+        margin: 1% 0%;
+      }
+    </style>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <button id="start-button" type="button">Start</button>
+      <button id="stop-button" type="button">Stop</button>
+      <input id="delay" type="number" placeholder="Input delay in ms..." />
+    </form>
+
+    <canvas id="plot" width="800px" height="600px" style="border: 1px solid black"></canvas>
+
+    <script src="scripts/script.js"></script>
+    <script>
+        document.getElementById("start-button").addEventListener("click", start);
+        document.getElementById("stop-button").addEventListener("click", stop);
+    </script>
+  </body>
+</html>

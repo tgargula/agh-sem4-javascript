@@ -1,0 +1,29 @@
+.cell {
+    /* Just to see */
+    width: 20px;
+    height: 20px; 
+}
+
+.green3 {
+    background-color: rgb(0, 153, 51);
+}
+
+.green2 {
+    background-color: rgb(102, 255, 102);
+}
+
+.green1 {
+    background-color: rgb(204, 255, 204);
+}
+
+.red1 {
+    background-color: rgb(255, 204, 204);
+}
+
+.red2 {
+    background-color: rgb(255, 102, 102);
+}
+
+.red3 {
+    background-color: rgb(204, 0, 0);
+}
