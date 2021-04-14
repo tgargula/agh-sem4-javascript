@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Page title
+    </title>
+    <script>
+        function drawTriangle(ctx) {
+            ctx.beginPath();
+            ctx.moveTo(50, 75);
+            ctx.lineTo(25, 125);
+            ctx.lineTo(75, 125);
+            ctx.lineTo(50, 75);
+            ctx.fillStyle = 'red';
+            ctx.fill();
+        }
+
+        function drawCircle(ctx) {
+            const beginX = 150;
+            const beginY = 100;
+            const radius = 25;
+            ctx.beginPath();
+            ctx.arc(beginX, beginY, radius, 0, 2 * Math.PI, true);
+            ctx.closePath();
+            ctx.fillStyle = 'green';
+            ctx.fill();
+        }
+
+        function drawRectangle(ctx) {
+            const beginX = 25;
+            const beginY = 175;
+            const sizeX = 150;
+            const sizeY = 50;
+            ctx.beginPath();
+            ctx.moveTo(beginX, beginY);
+            ctx.lineTo(beginX, beginY + sizeY);
+            ctx.lineTo(beginX + sizeX, beginY + sizeY);
+            ctx.lineTo(beginX + sizeX, beginY);
+            ctx.lineTo(beginX, beginY);
+            ctx.fillStyle = 'blue';
+            ctx.fill();
+        }
+
+        function draw() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillText("Hello World", 10, 50); //Wykreślenie podanego tekstu na płótnie / Drawing given text on canvas
+            drawTriangle(ctx);
+            drawCircle(ctx);
+            drawRectangle(ctx);
+        }
+    </script>
+</head>
+
+<body onload="draw();">
+    <!-- We cannot access an element that has not been loaded yet -->
+    <main>
+        <h1>
+            Płótno
+        </h1>
+
+        <h1>
+            Canvas
+        </h1>
+
+        <canvas id="canvas" width="200" height="300" style="border:1px solid #000000;">
+            Wygląda na to, że twoja przeglądarka nie obsługuje elementu "canvas" / It looks like your browser does not
+            support the "canvas" element
+        </canvas>
+    </main>
+</body>
+
+</html>

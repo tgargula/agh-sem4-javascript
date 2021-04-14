@@ -1,0 +1,40 @@
+<html>
+
+<body onLoad="
+            console.log('Tekst 1');
+            window.alert('Tekst 2');
+          ">
+    <!-- 
+        document.write nadpisuje zawartość HTML dokumentu, a więc usunie zawartość
+        pliku po załadowaniu
+    -->
+    <div>Treść dokumentu HTML</div>
+    <div>Treść dokumentu HTML</div>
+    <div>Treść dokumentu HTML</div>
+    <form>
+        <input id="pole_tekstowe" name="pole_tekstowe" type="text">
+        <input id="pole_liczbowe" name="pole_liczbowe" type="number">
+        <input type="button" value="Wypisz" 
+        onclick="
+            const text = document.getElementById('pole_tekstowe').value;
+            const number = document.getElementById('pole_liczbowe').value;
+            console.log(`Pole tekstowe: ${text}, ${typeof(text)}`);
+            console.log(`Pole liczbowe: ${number}, ${typeof(number)}`);    
+        ">
+        <!-- 
+            1. Wprowadzeniu wartości będącej liczbą: 
+                a) w polu tekstowym – zwraca się liczba o typie string
+                b) w polu liczbowym – zwraca się liczba o typie string
+            2. Wprowadzeniu wartości będącej napisem:
+                a) w polu tekstowym – zwraca się napis o typie string
+                b) w polu liczbowym – pole jest otoczone na czerwono, zwraca się pusty string
+            3. Niewprowadzeniu wartości i naciśnięciu przycisku "Wypisz" 
+                Zwracane są napisy puste typu string
+        -->
+    </form>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
