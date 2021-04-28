@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="script.js"></script>
+
+    <button id="start" type="button">Start!</button>
+    <button id="stop" type="button">Stop</button>
+
+    <form>
+      <label for="name">Nazwa użytkownika</label><br />
+      <input id="name" value="User" /><br />
+      <div>
+        <label for="level1">Etap 1</label><br />
+        <div id="level1">
+          <label for="squares1">Liczba kwadratów</label><br />
+          <input type="text" id="squares1" value="30" /><br />
+          <label for="speed1">Prędkość koła</label><br />
+          <input type="text" id="speed1" value="5" /><br />
+          <label for="ctrspeed1">Prędkość licznika</label><br />
+          <input type="text" id="ctrspeed1" value="1" />
+        </div>
+      </div>
+      <div>
+        <label for="level2">Etap 2</label><br />
+        <div id="level2">
+          <label for="squares2">Liczba kwadratów</label><br />
+          <input type="text" id="squares2" value="50" /><br />
+          <label for="speed2">Prędkość koła</label><br />
+          <input type="text" id="speed2" value="10" /><br />
+          <label for="ctrspeed2">Prędkość licznika</label><br />
+          <input type="text" id="ctrspeed2" value="2" />
+        </div>
+      </div>
+      <div>
+        <label for="level3">Etap 3</label><br />
+        <div id="level3">
+          <label for="squares3">Liczba kwadratów</label><br />
+          <input type="text" id="squares3" value="80" /><br />
+          <label for="speed3">Prędkość koła</label><br />
+          <input type="text" id="speed3" value="15" /><br />
+          <label for="ctrspeed3">Prędkość licznika</label><br />
+          <input type="text" id="ctrspeed3" value="3" />
+        </div>
+      </div>
+    </form>
+
+    <div id="game">
+      <game-table score="0" time="180"></game-table>
+      <game-canvas width="800" height="600" elementSize="50"></game-canvas>
+    </div>
+
+    <script src="script2.js"></script>
+  </body>
+</html>

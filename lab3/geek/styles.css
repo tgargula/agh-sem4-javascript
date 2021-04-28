@@ -1,0 +1,12 @@
+border {
+  border: 5px solid black;
+}
+
+form {
+  display: inline-block;
+}
+
+form div {
+  float: left;
+  margin: 2px;
+}
