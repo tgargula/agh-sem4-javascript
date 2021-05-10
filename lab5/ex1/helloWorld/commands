@@ -1,0 +1,7 @@
+npm:
+	npm i morgan pug express [mocha]
+	npm i package-lock.json
+
+yarn:
+	yarn add morgan pug express [mocha]
+	yarn add yarn.lock
