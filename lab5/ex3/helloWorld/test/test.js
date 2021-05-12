@@ -128,3 +128,103 @@ describe('GET /json/:name app2', () => {
       });
   });
 });
+
+describe('GET /calculate/:operation/:x/:y', () => {
+  it('Check /calculate/add/1/2', (done) => {
+    server1
+      .get('/calculate/add/1/2')
+      .expect('Content-Type', /html/)
+      .expect(200)
+      .end((_err, res) => {
+        expect(res.text).to.include('<h1>1 + 2 = 3</h1>');
+        done();
+      });
+  });
+  it('Check /calculate/divide/3/4', (done) => {
+    server1
+      .get('/calculate/divide/3/4')
+      .expect('Content-Type', /html/)
+      .expect(200)
+      .end((_err, res) => {
+        expect(res.text).to.include('<h1>3 / 4 = 0.75</h1>');
+        done();
+      });
+  });
+  it('Check /calculate/multiply/5/6', (done) => {
+    server1
+      .get('/calculate/multiply/5/6')
+      .expect('Content-Type', /html/)
+      .expect(200)
+      .end((_err, res) => {
+        expect(res.text).to.include('<h1>5 * 6 = 30</h1>');
+        done();
+      });
+  });
+});
+
+describe('GET /results', () => {
+  it('Check /results', (done) => {
+    server1
+      .get('/results')
+      .expect('Content-Type', /html/)
+      .expect(200)
+      .end((_err, res) => {
+        expect(res.text)
+          .to.include('<td>3</td>')
+          .and.to.include('<td>/</td>')
+          .and.to.include('<td>*</td>')
+          .and.to.include('<td>30</td>');
+        done();
+      });
+  });
+});
+
+describe('GET /calculate/:operation/:x/:y', () => {
+  it('Check /calculate/add/1/2', (done) => {
+    server2
+      .get('/calculate/add/1/2')
+      .expect('Content-Type', /html/)
+      .expect(200)
+      .end((_err, res) => {
+        expect(res.text).to.include('<h1>1 + 2 = 3</h1>');
+        done();
+      });
+  });
+  it('Check /calculate/divide/3/4', (done) => {
+    server2
+      .get('/calculate/divide/3/4')
+      .expect('Content-Type', /html/)
+      .expect(200)
+      .end((_err, res) => {
+        expect(res.text).to.include('<h1>3 / 4 = 0.75</h1>');
+        done();
+      });
+  });
+  it('Check /calculate/multiply/5/6', (done) => {
+    server2
+      .get('/calculate/multiply/5/6')
+      .expect('Content-Type', /html/)
+      .expect(200)
+      .end((_err, res) => {
+        expect(res.text).to.include('<h1>5 * 6 = 30</h1>');
+        done();
+      });
+  });
+});
+
+describe('GET /results', () => {
+  it('Check /results', (done) => {
+    server2
+      .get('/results')
+      .expect('Content-Type', /html/)
+      .expect(200)
+      .end((_err, res) => {
+        expect(res.text)
+          .to.include('<td>3</td>')
+          .and.to.include('<td>/</td>')
+          .and.to.include('<td>*</td>')
+          .and.to.include('<td>30</td>');
+        done();
+      });
+  });
+});

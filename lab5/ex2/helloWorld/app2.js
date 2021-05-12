@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 
 app.get('/json/:name', (req, res) => {
   const json = require(`./json/${req.params.name}`);
+  module.exports.test.json2 = json;
   res.render('table', {pretty: true, json: calculated(json)})
 });
 

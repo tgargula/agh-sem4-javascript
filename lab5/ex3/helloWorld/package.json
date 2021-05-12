@@ -1,0 +1,26 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "The \"Hello World\" application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./app2.js",
+    "test": "npx mocha",
+    "app1": "echo 'Uruchamiam aplikację nr 1'; node ./app1.js",
+    "app2": "echo 'Uruchamiam aplikację nr 2'; node ./app2.js"
+  },
+  "author": "Tomasz Gargula <tgargula@student.agh.edu.pl>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mocha": "^8.4.0",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-json": "^1.0.0",
+    "mongodb": "^3.6.6",
+    "supertest": "^6.1.3"
+  }
+}
