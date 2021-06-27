@@ -1,0 +1,31 @@
+extends layout.pug 
+
+block content 
+    h1 You are seeing the notes of #{student.name} #{student.surname}!
+
+    each subject in student.subjects
+        span #{subject.name}:
+        each note in subject.notes
+            span #{note}
+            img(id="delete-image" src="/images/trash.png" width="10")
+            span
+        br
+
+    div
+        h2 Dodaj przedmiot 
+        form(method="post")
+            label(for="subject") Nazwa przedmiotu:
+            input(type="text", name="subject")
+            input(type="submit", value="Dodaj")
+
+        br
+        h2 Dodaj ocenę
+        form(method="post")
+            label(for="subject") Przedmiot: 
+            select(name="subject")
+                each subject in student.subjects 
+                    option #{subject.name}
+            br
+            label(for="note")
+            input(type="text", name="note")
+            input(type="submit", value="Dodaj")

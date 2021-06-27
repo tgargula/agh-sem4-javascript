@@ -1,0 +1,21 @@
+extends layout.pug 
+
+block content 
+    h1 Welcome #{user}!
+
+    a(href="/logout")
+        input(type="button", value="Wyloguj")
+    
+    br
+
+    form(action="/teacher/student", method="get")
+        label(for="students-search") Wyszukaj:
+        input(id="students-search" type="text" name="students-search")
+        input(type="submit", value="Edytuj oceny studenta")
+
+    div(id="students")
+        span Studenci:
+        each student in students
+            span(class="student") #{student.name} #{student.surname}
+
+    script(src="/javascripts/teacher.js") 

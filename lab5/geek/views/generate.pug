@@ -1,0 +1,12 @@
+extends layout.pug 
+
+block content 
+
+    form(action="/generate", method="post")
+        label(for="students") Ilu studentów wygenerować?
+        input(type="number", name="students")
+        br
+        label(for="teachers") Ile nauczycieli wygenerować?
+        input(type="number" name="teachers")
+        br
+        input(type="submit")

@@ -1,0 +1,19 @@
+extends layout.pug 
+
+block content 
+    h1 Welcome #{user}!
+
+    a(href="/logout")
+        input(type="button", value="Wyloguj")
+    
+    br
+
+    table
+        tr 
+            th Studenci 
+        each student in students
+            tr 
+                td
+                    a(href=`/teacher/student/${student.username}`)
+                        span #{student.name} #{student.surname}
+            

@@ -1,0 +1,14 @@
+extends layout.pug 
+
+block content 
+    h1 Welcome #{user}!
+
+    a(href="/logout")
+        input(type="button", value="Wyloguj")
+    
+    br
+
+    each subject in subjects 
+        h2 #{subject.name}:
+        each note in subject.notes 
+            span #{note}

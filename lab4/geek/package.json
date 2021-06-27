@@ -1,0 +1,19 @@
+{
+  "name": "virtual-deans-office",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "npx mocha",
+    "start": "node server.js"
+  },
+  "author": "Tomasz Gargula <tgargula@student.agh.edu.pl>",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "formidable": "^1.2.2",
+    "http": "*",
+    "mocha": "^8.4.0",
+    "mongodb": "^3.6.6"
+  }
+}

@@ -1,0 +1,13 @@
+extends index.pug
+
+block table
+    table(class="table")
+        tr 
+            th Data 
+            each curr in currencies
+                th #{curr}
+        each doc in records
+            tr 
+                td #{doc.date}
+                each currency in doc.exrates
+                    td #{currency}

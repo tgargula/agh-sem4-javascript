@@ -1,0 +1,12 @@
+extends layout.pug 
+
+block content 
+    h1 Welcome #{user}!
+
+    a(href="/logout")
+        input(type="button", value="Wyloguj")
+    
+    br
+
+    a(href="/notes")
+        input(type="button", value="Oceny")

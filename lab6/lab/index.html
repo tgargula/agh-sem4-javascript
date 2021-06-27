@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas
+      id="canvas"
+      width="400"
+      height="300"
+      style="border: 1px solid black"
+    >
+    </canvas>
+    <form>
+      <select id="select">
+        <option>Trójkąt</option>
+        <option>Prostokąt</option>
+        <option>Okrąg</option>
+      </select>
+      <input id="reset" type="reset" value="Kasuj" />
+    </form>
+    <script>
+      const drawCircle = (canvas, params) => {
+        const ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        const [x, y] = params.center;
+        ctx.arc(x, y, params.radius, 0, 2 * Math.PI);
+        ctx.strokeStyle = params.color;
+        ctx.lineWidth = 5;
+        ctx.stroke();
+      };
+
+      const drawRectangle = (canvas, params) => {
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = params.color;
+        ctx.fillRect(params.x, params.y, params.height, params.width);
+      };
+
+      const drawTriangle = (canvas, params) => {
+        const ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.moveTo(...params.points[2]);
+        for (let i = 0; i < 3; i++) {
+          ctx.lineTo(...params.points[i]);
+        }
+        ctx.fillStyle = params.color;
+        ctx.fill();
+      };
+
+      const clearCanvas = (canvas) => {
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      };
+
+      const drawAll = (figures) => {
+        for (const figure of figures) {
+          switch (figure.id) {
+            case 'Prostokąt':
+              drawRectangle(canvas, figure);
+              break;
+            case 'Okrąg':
+              drawCircle(canvas, figure);
+              break;
+            case 'Trójkąt':
+              drawTriangle(canvas, figure);
+              break;
+          }
+        }
+      };
+
+      const canvas = document.getElementById('canvas');
+      const reset = document.getElementById('reset');
+
+      canvas.addEventListener('click', async (e) => {
+        const type = document.getElementById('select').value;
+        const rect = canvas.getBoundingClientRect();
+        const url = `http://localhost:8080?x=${e.clientX - rect.left}&y=${e.clientY - rect.top}&id=${type}`;
+        try {
+          const response = await fetch(url, { method: 'GET' });
+          clearCanvas(canvas);
+
+          // draw all figures
+          const json = await response.json();
+          drawAll(json);
+        } catch (e) {
+          throw e;
+        }
+      });
+
+      reset.addEventListener('click', async (_e) => {
+        const type = document.getElementById('select').value;
+        const url = `http://localhost:8080?id=${type}`;
+        try {
+          const response = await fetch(url, { method: 'DELETE' });
+          clearCanvas(canvas);
+
+          // draw all figures
+          const json = await response.json();
+          drawAll(json);
+        } catch (e) {
+          throw e;
+        }
+      });
+    </script>
+  </body>
+</html>

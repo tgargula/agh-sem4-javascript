@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      const downloadRemote = async () => {
+        const remote = document.getElementById('remote');
+        const area = document.getElementsByName('area')[0].value;
+        const location = document.getElementsByName('location')[0].value;
+        const url = `http://worldtimeapi.org/api/timezone/${area}/${location}.json`;
+        const settings = {
+          method: 'GET',
+          origin: 'http://localhost:8080',
+        };
+        remote.innerHTML = 'Downloading data';
+        console.log('info: I start downloading the data...');
+        try {
+          const response = await fetch(url, settings);
+          if (!response.ok) throw response.statusText;
+          console.log('info: Downloading successfull!');
+          const json = await response.json();
+
+          const datetime = json.datetime.split('T');
+          const date = datetime[0];
+          const time = datetime[1].split('.')[0];
+          remote.innerHTML = `${date}, ${time}`;
+        } catch (err) {
+          console.log(err);
+          console.log('info: Downloading not successfull!');
+          remote.innerHTML = 'The server is overloaded';
+        }
+      };
+      const downloadLocal = async () => {
+        const local = document.getElementById('local');
+        const settings = {
+          method: 'GET',
+          origin: 'http://localhost:8080',
+          'Content-Type': 'text/html',
+        };
+        try {
+          const response = await fetch('http://localhost:8081', settings);
+          const htmlText = await response.text();
+          const div = document.createElement('div');
+          div.innerHTML = htmlText;
+          local.replaceChild(div, local.childNodes[0]);
+        } catch (err) {
+          throw err;
+        }
+      };
+      const download = () => {
+        downloadRemote();
+        downloadLocal();
+      };
+    </script>
+  </head>
+  <body>
+    <form>
+      <label for="area">Area: </label>
+      <input name="area" type="text" /><br />
+      <label for="location">Location: </label>
+      <input name="location" type="text" /><br />
+      <input type="button" value="Pobierz" onclick="download()" /><br />
+    </form>
+    <h1>Remote</h1>
+    <div id="remote">Remote date and time</div>
+    <h1>Local</h1>
+    <div id="local">Local date and time</div>
+  </body>
+</html>

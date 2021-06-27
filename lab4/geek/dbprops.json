@@ -1,0 +1,5 @@
+{
+  "dboName": "vdo",
+  "collectionName": "students",
+  "uri": "mongodb://localhost:27017/"
+}

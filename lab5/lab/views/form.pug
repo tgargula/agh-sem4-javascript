@@ -1,0 +1,14 @@
+extends index.pug 
+
+block addform 
+    form(action="/docinfo" method="post" class="m-5") 
+        label(for="date") Data:
+        input(type="date" name="date")
+        br
+        label(for="currency") Nazwa waluty:
+        input(type="text" name="currency")
+        br
+        label(for="exrate") Kurs:
+        input(type="text" name="exrate")
+        br
+        input(type="submit", value="Dodaj")

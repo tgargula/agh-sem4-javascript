@@ -1,0 +1,27 @@
+extends layout.pug 
+
+block content
+    form(action="/users/add", method="post")
+        label(for="name") Imię
+        input(type="text", name="name")
+        br
+        label(for="surname") Nazwisko
+        input(type="text", name="surname")
+        br
+        label(for="username") Login 
+        input(id="username" type="text", name="username")
+        br
+        label(for="password") Hasło
+        input(type="password", name="password")
+        br
+        label(for="teacher") Czy nauczyciel
+        input(type="checkbox", name="teacher")
+        br
+        input(type="submit", value="Dodaj")
+    
+    div(id="takenusernames")
+        span Zajęte loginy:
+        each username in usernames
+            span #{username}
+
+    script(src="/javascripts/newUser.js")
